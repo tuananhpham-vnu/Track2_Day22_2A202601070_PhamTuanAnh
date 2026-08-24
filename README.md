@@ -33,6 +33,7 @@ Trước khi bắt đầu, hãy đảm bảo bạn đã có:
   - OpenAI (`OPENAI_API_KEY`)
   - Google Gemini (`GOOGLE_API_KEY`)
   - Anthropic Claude (`ANTHROPIC_API_KEY`)
+  - DeepSeek (`DEEPSEEK_API_KEY`)
   - OpenRouter (`OPENROUTER_API_KEY`)
   - Ollama (chạy local, không cần API key)
 - **Tài khoản LangSmith** — đăng ký miễn phí tại [smith.langchain.com](https://smith.langchain.com) và lấy API key
@@ -77,8 +78,14 @@ GOOGLE_API_KEY=AIza...
 # Anthropic (nếu dùng PROVIDER=anthropic)
 ANTHROPIC_API_KEY=sk-ant-...
 
+# DeepSeek (nếu dùng PROVIDER=deepseek)
+DEEPSEEK_API_KEY=sk-...
+
 # OpenRouter (nếu dùng PROVIDER=openrouter)
 OPENROUTER_API_KEY=sk-or-...
+
+# Provider riêng cho embeddings — BẮT BUỘC khi PROVIDER=deepseek hoặc anthropic
+EMBEDDING_PROVIDER=gemini
 ```
 
 ### 3. Chọn LLM provider
@@ -89,9 +96,16 @@ OPENROUTER_API_KEY=sk-or-...
 |--------------|-------------------|---------------------------------|
 | `openai`     | OpenAI GPT        | Mặc định, ổn định nhất          |
 | `gemini`     | Google Gemini     | Miễn phí với quota giới hạn     |
-| `anthropic`  | Anthropic Claude  | Chất lượng cao                  |
+| `anthropic`  | Anthropic Claude  | Chất lượng cao, ⚠️ không có embeddings |
+| `deepseek`   | DeepSeek          | Rẻ, quota rộng, ⚠️ không có embeddings |
 | `ollama`     | Ollama (local)    | Không cần API key, cần GPU/CPU  |
 | `openrouter` | OpenRouter        | Tổng hợp nhiều model            |
+
+> **Lưu ý — `deepseek` và `anthropic` không có Embeddings API.**
+> Khi dùng 2 provider này, phải đặt thêm `EMBEDDING_PROVIDER` trong `.env`
+> (ví dụ `EMBEDDING_PROVIDER=gemini`) để lấy embedding từ nơi khác.
+> Quota embedding của Gemini tách biệt với quota chat, nên cặp
+> `PROVIDER=deepseek` + `EMBEDDING_PROVIDER=gemini` chạy được cả 4 bước.
 
 ### 4. Xác minh cài đặt
 

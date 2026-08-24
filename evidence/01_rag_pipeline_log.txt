@@ -1,0 +1,178 @@
+============================================================
+  Bước 1: LangSmith RAG Pipeline
+============================================================
+✅ Config OK  |  Provider: GEMINI  |  Project: day22-lab
+📚 Đã chia thành 107 chunks
+♻️  Đã nạp FAISS index từ cache (faiss_index)
+[01/50] Q: What are the three main types of machine learning?
+       A: Based on the provided context, the three main types of machine learning are:
+
+1. Supervised learning
+
+[02/50] Q: What is overfitting in machine learning?
+       A: Dựa trên context được cung cấp, overfitting (hiện tượng học quá khớp) xảy ra khi một mô hình học dữ 
+
+[03/50] Q: Explain the bias-variance tradeoff.
+       A: Dựa vào ngữ cảnh được cung cấp, bias-variance tradeoff (sự đánh đổi giữa độ chệch và phương sai) là 
+
+[04/50] Q: How does regularization prevent overfitting?
+       A: Dựa trên context được cung cấp, regularization ngăn chặn overfitting bằng cách làm nản lòng các mô h
+
+[05/50] Q: What is cross-validation?
+       A: Dựa trên ngữ cảnh được cung cấp, cross-validation (kiểm tra chéo) là một kỹ thuật đánh giá mô hình g
+
+[06/50] Q: What is backpropagation?
+       A: Dựa vào ngữ cảnh được cung cấp, Backpropagation là thuật toán cốt lõi dùng để huấn luyện mạng nơ-ron
+
+[07/50] Q: What are Convolutional Neural Networks primarily used for?
+       A: Dựa trên context được cung cấp, Convolutional Neural Networks (CNNs) được sử dụng chuyên biệt để xử 
+
+[08/50] Q: How do LSTM networks address the vanishing gradient problem?
+       A: Dựa vào ngữ cảnh được cung cấp, mạng LSTM giải quyết vấn đề vanishing gradient bằng cách cho phép cá
+
+[09/50] Q: What activation functions are commonly used in neural networ
+       A: Dựa trên context được cung cấp, các hàm kích hoạt (activation functions) thường được sử dụng là:
+
+* 
+
+[10/50] Q: What is the role of pooling layers in CNNs?
+       A: Based on the provided context, the role of pooling layers in Convolutional Neural Networks includes:
+
+[11/50] Q: What is the transformer architecture?
+       A: Dựa trên context được cung cấp, transformer architecture là kiến trúc đã cách mạng hóa lĩnh vực xử l
+
+[12/50] Q: What are word embeddings?
+       A: Dựa trên context được cung cấp, word embeddings là các biểu diễn vé-tơ dày đặc (dense vector represe
+
+[13/50] Q: What is transfer learning in NLP?
+       A: Based on the provided context, transfer learning in NLP means pre-training large models on massive c
+
+[14/50] Q: How does BERT handle language understanding?
+       A: Dựa trên context được cung cấp, BERT xử lý việc hiểu ngôn ngữ thông qua các cách sau:
+
+* Sử dụng quá
+
+[15/50] Q: What is self-attention in transformers?
+       A: Dựa trên context được cung cấp, self-attention là cơ chế cốt lõi mang lại sức mạnh cho các mô hình t
+
+[16/50] Q: What is GPT and how is it trained?
+       A: Dựa trên context được cung cấp, GPT (Generative Pre-trained Transformer) là một họ các mô hình ngôn 
+
+[17/50] Q: What is instruction tuning?
+       A: Dựa trên context được cung cấp, instruction tuning là một kỹ thuật tinh chỉnh có giám sát (supervise
+
+[18/50] Q: What is RLHF?
+       A: Dựa vào context được cung cấp, RLHF (Reinforcement Learning from Human Feedback) là một kỹ thuật dùn
+
+[19/50] Q: What is chain-of-thought prompting?
+       A: Dựa trên context được cung cấp, chain-of-thought prompting là một kỹ thuật cải thiện khả năng suy lu
+
+[20/50] Q: What is the context length of GPT-4?
+       A: Dựa trên ngữ cảnh được cung cấp, GPT-4 hỗ trợ độ dài ngữ cảnh lên tới 128K tokens.
+
+[21/50] Q: What is Retrieval-Augmented Generation?
+       A: Based on the provided context, Retrieval-Augmented Generation (RAG) is an approach that augments lan
+
+[22/50] Q: What are the main components of a RAG pipeline?
+       A: Based on the provided context, the main components of a RAG pipeline are:
+
+1. A **retriever** that s
+
+[23/50] Q: What is dense retrieval?
+       A: Dựa trên ngữ cảnh được cung cấp, dense retrieval (truy xuất dày) là một phương pháp truy xuất tài li
+
+[24/50] Q: Why is chunking strategy important in RAG?
+       A: Dựa trên context được cung cấp, chiến lược chia nhỏ (chunking strategy) rất quan trọng trong RAG vì 
+
+[25/50] Q: What advanced RAG techniques exist beyond basic retrieval?
+       A: Dựa trên context được cung cấp, các kỹ thuật Advanced RAG nâng cao bao gồm:
+
+* **Re-ranking** (Sắp x
+
+[26/50] Q: What are vector databases used for?
+       A: Based on the provided context, vector databases are used for:
+
+* Managing and querying high-dimensio
+
+[27/50] Q: What is FAISS?
+       A: Dựa trên context được cung cấp, FAISS (Facebook AI Similarity Search) là một thư viện được sử dụng r
+
+[28/50] Q: How do text embeddings capture semantic meaning?
+       A: Dựa trên context được cung cấp, text embeddings captures semantic meaning bằng cách chuyển đổi văn b
+
+[29/50] Q: What is HNSW?
+       A: Dựa trên context được cung cấp, HNSW (Hierarchical Navigable Small World) là một thuật toán dựa trên
+
+[30/50] Q: What is hybrid search in vector databases?
+       A: Dựa trên context được cung cấp, hybrid search là phương pháp kết hợp sức mạnh của cả tìm kiếm dựa tr
+
+[31/50] Q: What is LangChain?
+       A: Dựa trên context được cung cấp, LangChain là một mã nguồn mở (open-source framework) giúp đơn giản h
+
+[32/50] Q: What is LangChain Expression Language (LCEL)?
+       A: Dựa trên ngữ cảnh được cung cấp, LangChain Expression Language (LCEL) là một cú pháp khai báo (decla
+
+[33/50] Q: What is LangGraph?
+       A: Dựa trên context được cung cấp, LangGraph là một phần mở rộng của LangChain dùng để xây dựng các ứng
+
+[34/50] Q: What memory types does LangChain support?
+       A: Dựa trên context được cung cấp, LangChain hỗ trợ các loại memory sau:
+
+1. ConversationBufferMemory
+2
+
+[35/50] Q: What are LangChain retrievers?
+       A: Dựa vào context được cung cấp, LangChain retrievers là các thành phần (components) có chức năng tìm 
+
+[36/50] Q: What is LangSmith?
+       A: Dựa trên ngữ cảnh được cung cấp, LangSmith là một công cụ giúp theo dõi toàn diện các ứng dụng LLM t
+
+[37/50] Q: What information do LangSmith traces capture?
+       A: Based on the provided context, LangSmith traces capture inputs, outputs, latency, token usage, and e
+
+[38/50] Q: What is the LangSmith Prompt Hub?
+       A: Dựa trên context được cung cấp, LangSmith Prompt Hub là một kho lưu trữ tập trung (centralized repos
+
+[39/50] Q: How does LangSmith help monitor production LLM applications?
+       A: Dựa trên context được cung cấp, LangSmith giúp giám sát các ứng dụng LLM trong môi trường production
+
+[40/50] Q: What are LangSmith datasets used for?
+       A: Dựa trên context được cung cấp, LangSmith datasets được sử dụng cho việc đánh giá có hệ thống (syste
+
+[41/50] Q: What is RAGAS?
+       A: Dựa trên context được cung cấp, RAGAS (Retrieval Augmented Generation Assessment) là một framework m
+
+[42/50] Q: How does RAGAS compute faithfulness?
+       A: Dựa trên context được cung cấp, RAGAS tính toán độ trung thực (faithfulness) bằng cách trích xuất cá
+
+[43/50] Q: What is answer relevancy in RAGAS?
+       A: Dựa trên context được cung cấp, Answer relevancy trong RAGAS đo lường mức độ câu trả lời giải quyết 
+
+[44/50] Q: What is context recall in RAGAS?
+       A: Dựa vào context được cung cấp, context recall trong RAGAS đo lường mức độ ngữ cảnh được truy xuất ba
+
+[45/50] Q: What inputs does RAGAS evaluation require?
+       A: Dựa trên context được cung cấp, RAGAS evaluation yêu cầu các đầu vào sau:
+
+* User queries (truy vấn 
+
+[46/50] Q: What is Guardrails AI?
+       A: Dựa trên context được cung cấp, Guardrails AI là một framework (mã nguồn mở) dùng để thêm các lớp xá
+
+[47/50] Q: What is PII and why is it important to detect in LLM respons
+       A: Dựa vào context được cung cấp:
+
+* **PII là gì:** PII là viết tắt của *Personally Identifiable Inform
+
+[48/50] Q: What does structured output validation ensure?
+       A: Dựa trên context được cung cấp, structured output validation đảm bảo rằng các phản hồi của LLM tuân 
+
+[49/50] Q: What is Constitutional AI?
+       A: Dựa trên context được cung cấp, Constitutional AI là một phương pháp căn chỉnh (aligning) các mô hìn
+
+[50/50] Q: What are common AI safety concerns with LLMs?
+       A: Dựa trên context được cung cấp, các vấn đề an toàn AI phổ biến với LLM (Large Language Models) bao g
+
+
+✅ 50 traces đã gửi lên LangSmith project 'day22-lab'
+   Mở https://smith.langchain.com để xem traces.

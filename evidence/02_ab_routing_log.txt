@@ -1,0 +1,300 @@
+============================================================
+  Bước 2: Prompt Hub & A/B Routing
+============================================================
+✅ Config OK  |  Provider: GEMINI  |  Project: day22-lab
+✅ Đã push V1 → https://smith.langchain.com/prompts/phamtuananh-rag-prompt-v1/2cdc273f?organizationId=674e272c-59a0-4570-b4f4-259afc0fbc5f
+✅ Đã push V2 → https://smith.langchain.com/prompts/phamtuananh-rag-prompt-v2/f43704bd?organizationId=674e272c-59a0-4570-b4f4-259afc0fbc5f
+D:\Folder F\phamtuananh@23020010\UET.iSEML\2026.VinAI.Lab\Track2\Lab22\.venv\Lib\site-packages\langsmith\client.py:8035: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit list of allowed classes (or 'messages' for untrusted input that contains only chat messages) to suppress this warning.
+  prompt = loads(json.dumps(prompt_object.manifest))
+↓ Đã pull 'phamtuananh-rag-prompt-v1' từ Hub
+D:\Folder F\phamtuananh@23020010\UET.iSEML\2026.VinAI.Lab\Track2\Lab22\.venv\Lib\site-packages\langsmith\client.py:8035: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit list of allowed classes (or 'messages' for untrusted input that contains only chat messages) to suppress this warning.
+  prompt = loads(json.dumps(prompt_object.manifest))
+↓ Đã pull 'phamtuananh-rag-prompt-v2' từ Hub
+♻️  Đã nạp FAISS index từ cache (faiss_index)
+[01] [req-0000] [prompt-v2] What are the three main types of machine learning?...
+     → 1) Ba loại chính của machine learning được đề cập trong tài liệu là supervised learning (h
+[02] [req-0001] [prompt-v2] What is overfitting in machine learning?...
+     → Overfitting is a phenomenon in machine learning that occurs when a model learns the traini
+[03] [req-0002] [prompt-v1] Explain the bias-variance tradeoff....
+     → The bias-variance tradeoff is about balancing high bias, which causes underfitting from st
+[04] [req-0003] [prompt-v1] How does regularization prevent overfitting?...
+     → Regularization prevents overfitting by adding penalty terms to the loss function to discou
+[05] [req-0004] [prompt-v2] What is cross-validation?...
+     → Cross-validation is a model evaluation technique that splits data into multiple folds to p
+[06] [req-0005] [prompt-v2] What is backpropagation?...
+     → Backpropagation is the core algorithm used for training neural networks by computing gradi
+[07] [req-0006] [prompt-v2] What are Convolutional Neural Networks primarily used f...
+     → Convolutional Neural Networks (CNNs) are primarily designed and used for processing grid-l
+[08] [req-0007] [prompt-v2] How do LSTM networks address the vanishing gradient pro...
+     → LSTM networks address the vanishing gradient problem by utilizing specialized gating mecha
+[09] [req-0008] [prompt-v1] What activation functions are commonly used in neural n...
+     → Common activation functions used in neural networks include ReLU, sigmoid, and tanh. ReLU 
+[10] [req-0009] [prompt-v2] What is the role of pooling layers in CNNs?...
+     → Pooling layers act as a key component in Convolutional Neural Networks to perform spatial 
+[11] [req-0010] [prompt-v1] What is the transformer architecture?...
+     → The transformer architecture is a deep learning model introduced in 2017 that uses self-at
+[12] [req-0011] [prompt-v1] What are word embeddings?...
+     → Word embeddings are dense vector representations of words that capture their semantic mean
+[13] [req-0012] [prompt-v2] What is transfer learning in NLP?...
+     → Transfer learning in NLP is defined as the dominant paradigm of pre-training large models 
+[14] [req-0013] [prompt-v1] How does BERT handle language understanding?...
+     → BERT handles language understanding by using bidirectional transformer training with maske
+[15] [req-0014] [prompt-v2] What is self-attention in transformers?...
+     → 1) Self-attention is the core mechanism in transformers that allows models to weigh the im
+[16] [req-0015] [prompt-v1] What is GPT and how is it trained?...
+     → GPT is a family of autoregressive language models developed by OpenAI that uses transfer l
+[17] [req-0016] [prompt-v2] What is instruction tuning?...
+     → Instruction tuning is a supervised fine-tuning technique used to make Large Language Model
+[18] [req-0017] [prompt-v2] What is RLHF?...
+     → Reinforcement Learning from Human Feedback (RLHF) is a technique used to align large langu
+[19] [req-0018] [prompt-v1] What is chain-of-thought prompting?...
+     → Chain-of-thought prompting is a technique that makes LLMs show their reasoning step by ste
+[20] [req-0019] [prompt-v2] What is the context length of GPT-4?...
+     → GPT-4 supports a context length of up to 128K tokens. This capacity enables the model to p
+Retrying langchain_google_genai.chat_models._chat_with_retry.<locals>._chat_with_retry in 2 seconds as it raised ResourceExhausted: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 15, model: gemini-3.5-flash-lite
+Please retry in 10.749815711s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerMinutePerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-3.5-flash-lite"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 15
+}
+, retry_delay {
+  seconds: 10
+}
+].
+Retrying langchain_google_genai.chat_models._chat_with_retry.<locals>._chat_with_retry in 4 seconds as it raised ResourceExhausted: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 15, model: gemini-3.5-flash-lite
+Please retry in 8.624890231s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerMinutePerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-3.5-flash-lite"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 15
+}
+, retry_delay {
+  seconds: 8
+}
+].
+Retrying langchain_google_genai.chat_models._chat_with_retry.<locals>._chat_with_retry in 8 seconds as it raised ResourceExhausted: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 15, model: gemini-3.5-flash-lite
+Please retry in 4.391536719s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerMinutePerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-3.5-flash-lite"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 15
+}
+, retry_delay {
+  seconds: 4
+}
+].
+Retrying langchain_google_genai.chat_models._chat_with_retry.<locals>._chat_with_retry in 16 seconds as it raised ResourceExhausted: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 15, model: gemini-3.5-flash-lite
+Please retry in 56.288689904s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerMinutePerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-3.5-flash-lite"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 15
+}
+, retry_delay {
+  seconds: 56
+}
+].
+[21] [req-0020] [prompt-v1] What is Retrieval-Augmented Generation?...
+     → Retrieval-Augmented Generation (RAG) is a method that connects language models with extern
+[22] [req-0021] [prompt-v1] What are the main components of a RAG pipeline?...
+     → A RAG pipeline mainly consists of a retriever and a generator. The retriever searches a do
+[23] [req-0022] [prompt-v2] What is dense retrieval?...
+     → Dense retrieval is a neural approach to document retrieval that outperforms traditional ke
+[24] [req-0023] [prompt-v1] Why is chunking strategy important in RAG?...
+     → Cách chia nhỏ văn bản (chunking) rất quan trọng vì nó quyết định độ chính xác khi tìm kiếm
+[25] [req-0024] [prompt-v2] What advanced RAG techniques exist beyond basic retriev...
+     → Advanced RAG techniques include re-ranking, query expansion, HyDE, and iterative retrieval
+[26] [req-0025] [prompt-v1] What are vector databases used for?...
+     → Vector databases are used for storing and querying high-dimensional vector embeddings to p
+[27] [req-0026] [prompt-v2] What is FAISS?...
+     → FAISS (Facebook AI Similarity Search) is a widely used library developed by Meta AI Resear
+[28] [req-0027] [prompt-v2] How do text embeddings capture semantic meaning?...
+     → Text embeddings capture semantic meaning by converting text into numerical vectors within 
+[29] [req-0028] [prompt-v2] What is HNSW?...
+     → HNSW (Hierarchical Navigable Small World) is a graph-based algorithm designed for approxim
+[30] [req-0029] [prompt-v2] What is hybrid search in vector databases?...
+     → 1) Hybrid search is a retrieval method in vector databases that combines dense vector sear
+[31] [req-0030] [prompt-v2] What is LangChain?...
+     → LangChain is an open-source framework designed to simplify the development of applications
+[32] [req-0031] [prompt-v2] What is LangChain Expression Language (LCEL)?...
+     → LangChain Expression Language (LCEL) is defined as a declarative syntax used for composing
+[33] [req-0032] [prompt-v1] What is LangGraph?...
+     → LangGraph is an extension of LangChain designed to build stateful, multi-actor application
+[34] [req-0033] [prompt-v2] What memory types does LangChain support?...
+     → LangChain supports four distinct memory types to enable conversational context across turn
+[35] [req-0034] [prompt-v1] What are LangChain retrievers?...
+     → LangChain retrievers are components that fetch relevant documents from a data source based
+[36] [req-0035] [prompt-v2] What is LangSmith?...
+     → LangSmith is an observability platform designed for comprehensive monitoring of LLM applic
+Retrying langchain_google_genai.chat_models._chat_with_retry.<locals>._chat_with_retry in 2 seconds as it raised ResourceExhausted: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 15, model: gemini-3.5-flash-lite
+Please retry in 11.092645874s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerMinutePerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-3.5-flash-lite"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 15
+}
+, retry_delay {
+  seconds: 11
+}
+].
+Retrying langchain_google_genai.chat_models._chat_with_retry.<locals>._chat_with_retry in 4 seconds as it raised ResourceExhausted: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 15, model: gemini-3.5-flash-lite
+Please retry in 8.879059711s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerMinutePerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-3.5-flash-lite"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 15
+}
+, retry_delay {
+  seconds: 8
+}
+].
+Retrying langchain_google_genai.chat_models._chat_with_retry.<locals>._chat_with_retry in 8 seconds as it raised ResourceExhausted: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 15, model: gemini-3.5-flash-lite
+Please retry in 4.723766077s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerMinutePerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-3.5-flash-lite"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 15
+}
+, retry_delay {
+  seconds: 4
+}
+].
+Retrying langchain_google_genai.chat_models._chat_with_retry.<locals>._chat_with_retry in 16 seconds as it raised ResourceExhausted: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 15, model: gemini-3.5-flash-lite
+Please retry in 56.593340286s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerMinutePerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-3.5-flash-lite"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 15
+}
+, retry_delay {
+  seconds: 56
+}
+].
+[37] [req-0036] [prompt-v2] What information do LangSmith traces capture?...
+     → LangSmith traces provide comprehensive visibility into LLM application behavior by capturi
+[38] [req-0037] [prompt-v1] What is the LangSmith Prompt Hub?...
+     → LangSmith Prompt Hub is a central repository for managing, versioning, and sharing prompt 
+[39] [req-0038] [prompt-v2] How does LangSmith help monitor production LLM applicat...
+     → LangSmith monitors production LLM applications by providing comprehensive metrics, detaile
+[40] [req-0039] [prompt-v2] What are LangSmith datasets used for?...
+     → LangSmith datasets are collections of example inputs and expected outputs primarily utiliz
+[41] [req-0040] [prompt-v2] What is RAGAS?...
+     → RAGAS (Retrieval Augmented Generation Assessment) is an open-source framework specifically
+[42] [req-0041] [prompt-v1] How does RAGAS compute faithfulness?...
+     → RAGAS computes faithfulness by first using an LLM to extract individual claims or atomic s
+[43] [req-0042] [prompt-v2] What is answer relevancy in RAGAS?...
+     → Answer relevancy in RAGAS is a metric that measures how well a generated answer addresses 
+[44] [req-0043] [prompt-v2] What is context recall in RAGAS?...
+     → Context recall in RAGAS is a metric that measures how thoroughly the retrieved passages or
+[45] [req-0044] [prompt-v1] What inputs does RAGAS evaluation require?...
+     → RAGAS evaluation requires user queries, generated answers, and retrieved contexts which mu
+[46] [req-0045] [prompt-v2] What is Guardrails AI?...
+     → Guardrails AI is an open-source framework designed to add validation and safety layers to 
+[47] [req-0046] [prompt-v1] What is PII and why is it important to detect in LLM re...
+     → PII stands for Personally Identifiable Information, which includes sensitive details like 
+[48] [req-0047] [prompt-v1] What does structured output validation ensure?...
+     → Structured output validation ensures that responses from large language models conform to 
+[49] [req-0048] [prompt-v2] What is Constitutional AI?...
+     → Constitutional AI is a technique developed by Anthropic to align language models with ethi
+[50] [req-0049] [prompt-v2] What are common AI safety concerns with LLMs?...
+     → 1) Các mối quan ngại phổ biến về an toàn AI đối với các mô hình ngôn ngữ lớn (LLM) bao gồm
+
+📊 Routing: V1=19 câu | V2=31 câu | Tổng=50
+✅ Bước 2 hoàn thành! Kiểm tra Prompt Hub và traces trên LangSmith.

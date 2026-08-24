@@ -50,7 +50,8 @@ LANGSMITH_PROJECT=day22-lab          # Tên project trên LangSmith
 LANGCHAIN_TRACING_V2=true            # Bật tracing — không thay đổi giá trị này
 
 # ─── Chọn provider LLM ────────────────────────────────────────────────────────
-PROVIDER=openai                      # openai | gemini | anthropic | ollama | openrouter
+PROVIDER=openai                      # openai | gemini | anthropic | deepseek | ollama | openrouter
+EMBEDDING_PROVIDER=                  # Bắt buộc khi PROVIDER=deepseek/anthropic (vd: gemini)
 
 # ─── OpenAI (nếu PROVIDER=openai) ────────────────────────────────────────────
 OPENAI_API_KEY=sk-...
@@ -61,6 +62,9 @@ GOOGLE_API_KEY=AIza...
 # ─── Anthropic (nếu PROVIDER=anthropic) ──────────────────────────────────────
 ANTHROPIC_API_KEY=sk-ant-...
 
+# ─── DeepSeek (nếu PROVIDER=deepseek) ────────────────────────────────────────
+DEEPSEEK_API_KEY=sk-...
+
 # ─── OpenRouter (nếu PROVIDER=openrouter) ────────────────────────────────────
 OPENROUTER_API_KEY=sk-or-...
 ```
@@ -70,6 +74,8 @@ Giải thích các biến quan trọng:
 - `LANGSMITH_PROJECT`: Tên project để nhóm các traces lại, dễ tìm trên dashboard.
 - `LANGCHAIN_TRACING_V2`: Phải là `true` để bật tracing — đặt sai sẽ mất toàn bộ traces.
 - `PROVIDER`: Xác định LLM và embedding model nào được dùng trong toàn bộ lab.
+- `EMBEDDING_PROVIDER`: Ghi đè provider dùng cho embeddings. Để trống = dùng chung `PROVIDER`.
+  Bắt buộc điền khi `PROVIDER=deepseek` hoặc `anthropic` vì 2 provider này không có Embeddings API.
 
 ### Bước 5 — Chọn LLM provider và điền thông tin
 
@@ -79,6 +85,8 @@ Chỉ cần điền thông tin cho provider bạn chọn, bỏ trống các prov
 - **Gemini**: Miễn phí với quota 15 request/phút — phù hợp nhưng có thể chậm hơn ở bước RAGAS.
 - **Anthropic**: Chất lượng rất cao, chi phí trung bình.
 - **Ollama**: Chạy hoàn toàn offline. Cần cài [ollama.ai](https://ollama.ai) và pull model trước (`ollama pull llama3.2`).
+- **DeepSeek**: Chi phí rất thấp, quota rộng hơn free tier của Gemini — lựa chọn tốt cho bước RAGAS
+  (bước này tốn 400+ request LLM). Không có Embeddings API, cần đặt `EMBEDDING_PROVIDER=gemini`.
 - **OpenRouter**: Tổng hợp nhiều model, có free tier cho một số model.
 
 ### Bước 6 — Xác minh cài đặt

@@ -1,5 +1,6 @@
 """
-Factory tạo LLM và Embeddings cho 5 providers: openai, gemini, anthropic, ollama, openrouter.
+Factory tạo LLM và Embeddings cho 6 providers:
+    openai, gemini, anthropic, deepseek, ollama, openrouter.
 
 Cách dùng:
     from utils.llm_factory import get_llm, get_embeddings
@@ -9,11 +10,34 @@ Cách dùng:
 
     llm_gemini = get_llm("gemini")    # chỉ định provider cụ thể
 """
+import os
 import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 import config
+
+# ── Rate limiter dùng chung ───────────────────────────────────────────────
+# Các free tier (đặc biệt Gemini) giới hạn số request/phút. Một
+# InMemoryRateLimiter dùng chung cho mọi LLM instance giúp toàn bộ lab
+# (kể cả RAGAS chạy song song) không vượt hạn mức và bị lỗi 429.
+_RATE_LIMITERS = {}
+
+
+def _get_rate_limiter(provider: str):
+    """Trả về rate limiter dùng chung cho provider (None nếu không giới hạn)."""
+    rpm = float(os.getenv(f"{provider.upper()}_RPM", "0"))
+    if rpm <= 0:
+        return None
+
+    if provider not in _RATE_LIMITERS:
+        from langchain_core.rate_limiters import InMemoryRateLimiter
+        _RATE_LIMITERS[provider] = InMemoryRateLimiter(
+            requests_per_second=rpm / 60.0,
+            check_every_n_seconds=0.5,
+            max_bucket_size=max(1.0, rpm / 10.0),
+        )
+    return _RATE_LIMITERS[provider]
 
 
 def get_llm(provider: str = None, temperature: float = 0.0):
@@ -21,7 +45,7 @@ def get_llm(provider: str = None, temperature: float = 0.0):
     Trả về BaseChatModel tương ứng với provider được chọn.
 
     Args:
-        provider    : "openai" | "gemini" | "anthropic" | "ollama" | "openrouter"
+        provider    : "openai" | "gemini" | "anthropic" | "deepseek" | "ollama" | "openrouter"
                       Mặc định: đọc PROVIDER từ .env (config.PROVIDER)
         temperature : độ ngẫu nhiên (0.0 = tất định, 1.0 = sáng tạo)
 
@@ -51,6 +75,8 @@ def get_llm(provider: str = None, temperature: float = 0.0):
             model=config.GEMINI_MODEL,
             google_api_key=config.GOOGLE_API_KEY,
             temperature=temperature,
+            max_retries=6,
+            rate_limiter=_get_rate_limiter("gemini"),
         )
 
     elif provider == "anthropic":
@@ -59,6 +85,18 @@ def get_llm(provider: str = None, temperature: float = 0.0):
             model=config.ANTHROPIC_MODEL,
             api_key=config.ANTHROPIC_API_KEY,
             temperature=temperature,
+        )
+
+    elif provider == "deepseek":
+        # DeepSeek dùng OpenAI-compatible API
+        from langchain_openai import ChatOpenAI
+        return ChatOpenAI(
+            model=config.DEEPSEEK_MODEL,
+            api_key=config.DEEPSEEK_API_KEY,
+            base_url=config.DEEPSEEK_BASE_URL,
+            temperature=temperature,
+            max_retries=6,
+            rate_limiter=_get_rate_limiter("deepseek"),
         )
 
     elif provider == "ollama":
@@ -82,7 +120,7 @@ def get_llm(provider: str = None, temperature: float = 0.0):
     else:
         raise ValueError(
             f"Provider không hợp lệ: '{provider}'. "
-            "Chọn một trong: openai, gemini, anthropic, ollama, openrouter"
+            "Chọn một trong: openai, gemini, anthropic, deepseek, ollama, openrouter"
         )
 
 
@@ -91,19 +129,26 @@ def get_embeddings(provider: str = None):
     Trả về Embeddings instance tương ứng với provider được chọn.
 
     Lưu ý quan trọng:
-        - Anthropic KHÔNG có Embeddings API → tự động fallback về OpenAI embeddings
+        - Anthropic và DeepSeek KHÔNG có Embeddings API
+          → đặt EMBEDDING_PROVIDER trong .env (ví dụ: gemini hoặc openai)
         - OpenRouter cũng dùng OpenAI embeddings (không có API embeddings riêng)
         - Ollama cần model embedding riêng (mặc định: nomic-embed-text)
           Cài đặt: ollama pull nomic-embed-text
 
     Args:
         provider: "openai" | "gemini" | "anthropic" | "ollama" | "openrouter"
-                  Mặc định: đọc PROVIDER từ .env
+                  Mặc định: EMBEDDING_PROVIDER từ .env, nếu trống thì dùng PROVIDER
 
     Returns:
         Embeddings instance sẵn sàng sử dụng
     """
-    provider = (provider or config.PROVIDER).lower()
+    provider = (provider or config.EMBEDDING_PROVIDER or config.PROVIDER).lower()
+
+    if provider == "deepseek":
+        raise ValueError(
+            "DeepSeek không cung cấp Embeddings API. "
+            "Hãy đặt EMBEDDING_PROVIDER=gemini (hoặc openai) trong file .env."
+        )
 
     if provider in ("openai", "openrouter"):
         from langchain_openai import OpenAIEmbeddings
@@ -140,6 +185,6 @@ def get_embeddings(provider: str = None):
 
     else:
         raise ValueError(
-            f"Provider không hợp lệ: '{provider}'. "
+            f"Embedding provider không hợp lệ: '{provider}'. "
             "Chọn một trong: openai, gemini, anthropic, ollama, openrouter"
         )
